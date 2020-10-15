@@ -1,6 +1,6 @@
 # Rooftop Review
 
-see project live at https://rooptopreview.herokuapp.com/
+see project live at https://rooftopreview.herokuapp.com/
 
 ## Purpose
 <p> I want to eventually make this project a platform like Yelp but is specifically for rooftop bars and cafes. </p>
