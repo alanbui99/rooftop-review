@@ -97,7 +97,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var lng = data[0].longitude;
     var location = data[0].formattedAddress;
     var newBar = {name: name, image: image, desc: desc, price: price, author:author, location: location, lat: lat, lng: lng};
-      // var newBar = {name: req.body.name, image: req.body.image, desc: req.body.desc, price: req.body.price, author:author};
     // Create a new bar and save to DB
     Bars.create(newBar, function(err, newlyCreated){
         if(err){
@@ -112,7 +111,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 });
 
 
-//SHOW - show more info about one campground
+//SHOW - show more info about one bar
 router.get("/:id", function(req,res) {
     Bars.findById(req.params.id).populate('comments').exec(function(err, foundBar){
         if(err || !foundBar) {
@@ -132,7 +131,7 @@ router.get("/:id/edit", middleware.checkBarOwnership, function(req, res) {
     });
 });
 //UPDATE - update bar info
-// UPDATE CAMPGROUND ROUTE
+// UPDATE BAR ROUTE
 router.put("/:id", middleware.checkBarOwnership, function(req, res){
     geocoder.geocode(req.body.bar.location, function (err, data) {
     if (err || !data.length) {
@@ -183,16 +182,11 @@ function sortBy(criterion) {
                     bars.push(bar);
                     
                 })
-                console.log(bars);
-                                   
-                // eval(require('locus'));
-                // return bars;
-            });
+             });
         }
 
     })
-    // console.log(bars);
-
+\
 } 
 
 module.exports = router;
